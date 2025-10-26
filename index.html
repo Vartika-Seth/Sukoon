@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sukoon - Guided Meditation App</title>
+  <link rel="icon" type="image/png" href="amity-logo.jpg" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom, #f0f7f4, #d7e9d7);
+      color: #333;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    header {
+      padding: 20px;
+      position: relative;
+    }
+
+    header h1 {
+      font-size: 2.2em;
+      color: #205e37;
+      margin: 0;
+    }
+
+    .amity-logo {
+      position: absolute;
+      top: 15px;
+      right: 25px;
+    }
+
+    .amity-logo img {
+      width: 100px;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 0 6px rgba(0,0,0,0.15);
+    }
+
+    section {
+      padding: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      display: inline-block;
+      width: 250px;
+      margin: 15px;
+      padding: 20px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    button {
+      background-color: #3b755f;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #2f5c4b;
+    }
+
+    audio {
+      margin-top: 15px;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 0.9em;
+      color: #777;
+      padding-bottom: 10px;
+    }
+
+    .learn-links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .learn-links a {
+      text-decoration: none;
+      color: #205e37;
+      font-weight: bold;
+    }
+
+    .learn-links a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Sukoon - Guided Meditation Dashboard</h1>
+    <div class="amity-logo">
+      <img src="amity-logo.jpg" alt="Amity University Logo">
+    </div>
+  </header>
+
+  <section id="dashboard">
+    <div class="card" onclick="startMeditation()">🧘‍♀️ Start Meditation</div>
+    <div class="card" onclick="viewJournal()">📖 My Journal</div>
+    <div class="card" onclick="viewProgress()">📊 My Progress</div>
+    <div class="card" onclick="learnMore()">🌿 Learn More</div>
+  </section>
+
+  <section id="meditation" style="display:none;">
+    <h2>Start Your Meditation</h2>
+    <label>Duration (minutes):
+      <input type="number" id="duration" min="1" max="60" />
+    </label><br><br>
+    <label>Meditation Type:
+      <select id="meditationType">
+        <option value="calm">Calm</option>
+        <option value="focus">Focus</option>
+        <option value="healing">Healing</option>
+      </select>
+    </label><br><br>
+    <button onclick="playMeditation()">Begin</button><br><br>
+    <audio id="bgMusic" controls loop></audio>
+  </section>
+
+  <section id="journal" style="display:none;">
+    <h2>My Journal</h2>
+    <textarea id="journalEntry" placeholder="How are you feeling today?" style="width:90%;height:120px;border-radius:10px;padding:10px;"></textarea><br>
+    <button onclick="saveJournal()">Save Entry</button>
+    <div id="journalEntries"></div>
+  </section>
+
+  <section id="progress" style="display:none;">
+    <h2>Progress Tracker</h2>
+    <p>Total Sessions: <span id="sessionCount">0</span></p>
+    <p>Total Minutes: <span id="totalMinutes">0</span></p>
+  </section>
+
+  <section id="learn" style="display:none;">
+    <h2>Learn More about Meditation</h2>
+    <div class="learn-links">
+      <a href="https://www.freemeditation.com.au/try-meditation-now/video-meditation/" target="_blank">🌸 Guided Meditation Videos – FreeMeditation</a>
+      <a href="https://www.pacesconnection.com/blog/meditation-techniques-for-managing-emotions" target="_blank">🌼 Emotional Wellness through Meditation – PACES Connection</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>Developed with mindfulness 🌿 | Sukoon 2025</p>
+  </footer>
+
+  <script>
+    function hideAll() {
+      document.getElementById('dashboard').style.display = 'none';
+      document.getElementById('meditation').style.display = 'none';
+      document.getElementById('journal').style.display = 'none';
+      document.getElementById('progress').style.display = 'none';
+      document.getElementById('learn').style.display = 'none';
+    }
+
+    function startMeditation() {
+      hideAll();
+      document.getElementById('meditation').style.display = 'block';
+    }
+
+    function viewJournal() {
+      hideAll();
+      document.getElementById('journal').style.display = 'block';
+      displayJournal();
+    }
+
+    function viewProgress() {
+      hideAll();
+      document.getElementById('progress').style.display = 'block';
+    }
+
+    function learnMore() {
+      hideAll();
+      document.getElementById('learn').style.display = 'block';
+    }
+
+    function playMeditation() {
+      const type = document.getElementById('meditationType').value;
+      const bgMusic = document.getElementById('bgMusic');
+      let src = '';
+
+      if (type === 'calm') src = 'https://cdn.pixabay.com/audio/2021/09/06/audio_8a1a8f3b4f.mp3';
+      if (type === 'focus') src = 'https://cdn.pixabay.com/audio/2022/03/15/audio_1b9391ef9d.mp3';
+      if (type === 'healing') src = 'https://cdn.pixabay.com/audio/2021/09/01/audio_9608e3fbd7.mp3';
+
+      bgMusic.src = src;
+      bgMusic.play();
+
+      const duration = Number(document.getElementById('duration').value) || 5;
+      const sessionCount = document.getElementById('sessionCount');
+      const totalMinutes = document.getElementById('totalMinutes');
+
+      sessionCount.textContent = Number(sessionCount.textContent) + 1;
+      totalMinutes.textContent = Number(totalMinutes.textContent) + duration;
+    }
+
+    function saveJournal() {
+      const entry = document.getElementById('journalEntry').value.trim();
+      if (!entry) return alert("Please write something before saving.");
+
+      const entries = JSON.parse(localStorage.getItem('journalEntries') || "[]");
+      entries.push({ text: entry, date: new Date().toLocaleString() });
+      localStorage.setItem('journalEntries', JSON.stringify(entries));
+      document.getElementById('journalEntry').value = '';
+      displayJournal();
+    }
+
+    function displayJournal() {
+      const entries = JSON.parse(localStorage.getItem('journalEntries') || "[]");
+      const container = document.getElementById('journalEntries');
+      container.innerHTML = entries.map(e => `<p><strong>${e.date}</strong><br>${e.text}</p>`).join('');
+    }
+  </script>
+</body>
+</html>
