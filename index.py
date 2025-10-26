@@ -1,4 +1,5 @@
-import react, { useState, useEffect, useRef } from 'react';
+import React;
+import { useState, useEffect, useRef } from 'react';
 import { Heart, Music, BookOpen, TrendingUp, Play, Pause, Volume2, VolumeX, Clock, Calendar, Award, Sparkles, Star, Home } from 'lucide-react';
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
@@ -1624,6 +1625,7 @@ function DiscoverView({ setCurrentView, bookmarkedContent, toggleBookmark }) {
     </div>
   );
 }
+
 
 
 
