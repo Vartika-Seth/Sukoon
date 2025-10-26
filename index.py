@@ -1624,3 +1624,4 @@ function DiscoverView({ setCurrentView, bookmarkedContent, toggleBookmark }) {
     </div>
   );
 }
+
