@@ -202,11 +202,11 @@ const LEARN_CONTENT = [
     icon: "🧠",
     fullContent: `Meditation activates the parasympathetic nervous system, which is responsible for the body "rest and digest" response. When you meditate:
 
-• Your heart rate slows down
-• Blood pressure decreases
-• Stress hormones like cortisol are reduced
-• The amygdala (fear center) becomes less reactive
-• The prefrontal cortex (reasoning center) becomes more active
+ "Your heart rate slows down"
+ "Blood pressure decreases"
+ "Stress hormones like cortisol are reduced"
+ "The amygdala (fear center) becomes less reactive"
+ "The prefrontal cortex (reasoning center) becomes more active"
 
 Regular practice can actually change the structure of your brain, increasing gray matter in areas associated with emotional regulation, learning, and memory. Even 10 minutes a day can make a significant difference in how your nervous system responds to stress.`
   },
@@ -235,17 +235,17 @@ To practice: Sit comfortably, focus on each chakra location, visualize its assoc
     fullContent: `When anxiety strikes, these grounding techniques can bring you back to the present:
 
 5-4-3-2-1 Method:
-• Name 5 things you can see
-• 4 things you can touch
-• 3 things you can hear
-• 2 things you can smell
-• 1 thing you can taste
+ "Name 5 things you can see"
+ "4 things you can touch"
+ "3 things you can hear"
+ "2 things you can smell"
+ "1 thing you can taste"
 
 Physical Grounding:
-• Press your feet firmly into the floor
-• Hold ice cubes in your hands
-• Splash cold water on your face
-• Do progressive muscle relaxation`
+ "Press your feet firmly into the floor"
+ "Hold ice cubes in your hands"
+ "Splash cold water on your face"
+ "Do progressive muscle relaxation"`
   },
   {
     title: "The Art of Body Scan Meditation",
@@ -273,10 +273,10 @@ Practice for 10-30 minutes daily.`
     fullContent: `Loving-kindness (Metta) meditation develops unconditional love and compassion:
 
 Phrases to repeat:
-• May I/you be safe
-• May I/you be healthy
-• May I/you be happy
-• May I/you live with ease
+ 1. May I/you be safe
+ 2. May I/you be healthy
+ 3. May I/you be happy
+ 4. May I/you live with ease
 
 Begin with yourself, then extend to loved ones, neutral people, difficult people, and all beings.`
   }
@@ -1624,6 +1624,7 @@ function DiscoverView({ setCurrentView, bookmarkedContent, toggleBookmark }) {
     </div>
   );
 }
+
 
 
 
