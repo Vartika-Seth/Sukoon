@@ -1625,3 +1625,4 @@ function DiscoverView({ setCurrentView, bookmarkedContent, toggleBookmark }) {
   );
 }
 
+
