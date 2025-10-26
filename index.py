@@ -200,7 +200,7 @@ const LEARN_CONTENT = [
     description: "Understanding the science behind mindful breathing and stress reduction",
     category: "Science",
     icon: "🧠",
-    fullContent: `Meditation activates the parasympathetic nervous system, which is responsible for the body's "rest and digest" response. When you meditate:
+    fullContent: `Meditation activates the parasympathetic nervous system, which is responsible for the body "rest and digest" response. When you meditate:
 
 • Your heart rate slows down
 • Blood pressure decreases
@@ -1624,5 +1624,6 @@ function DiscoverView({ setCurrentView, bookmarkedContent, toggleBookmark }) {
     </div>
   );
 }
+
 
 
